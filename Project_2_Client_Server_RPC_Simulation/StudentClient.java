@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 
 public class StudentClient extends Thread{
 
-	private static int numStudents = 5;
+	private static int numStudents = 10;
 	
 	
 	
@@ -24,8 +24,8 @@ public class StudentClient extends Thread{
 			String line;
 			int counter = 0;
 
-			while(methodNumber < 2){
-
+			while(methodNumber < 8){
+				
 				out.println("Student " + methodNumber);
 				line = in.readLine();
 				//System.out.println(line);

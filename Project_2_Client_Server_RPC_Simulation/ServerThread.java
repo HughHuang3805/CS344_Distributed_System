@@ -69,8 +69,23 @@ public class ServerThread extends Thread{
 				student.getATable();
 				break;
 			case 2:
-				
-				break;				
+				student.waitToTakeExam();
+				break;	
+			case 3:
+				student.waitToBeGraded();
+				break;
+			case 4:
+				student.waitToTakeExam();
+				break;	
+			case 5:
+				student.waitToBeGraded();
+				break;
+			case 6:
+				student.waitToTakeExam();
+				break;	
+			case 7:
+				student.waitToBeGraded();
+				break;
 			}//switch		
 		} else{
 			Instructor instructor = new Instructor();
@@ -84,8 +99,28 @@ public class ServerThread extends Thread{
 				break;
 			case 2:
 				//System.out.println("hi");
-				
-				break;									
+				instructor.takeExam();
+				break;	
+			case 3:
+				instructor.gradeExam();
+				break;
+			case 4:
+				//System.out.println("hi");
+				instructor.takeExam();
+				break;	
+			case 5:
+				instructor.gradeExam();
+				break;
+			case 6:
+				//System.out.println("hi");
+				instructor.takeExam();
+				break;	
+			case 7:
+				instructor.gradeExam();
+				break;
+			case 8:
+				instructor.endMessage();
+				break;
 			}//else
 		}//else
 	}//runMethod

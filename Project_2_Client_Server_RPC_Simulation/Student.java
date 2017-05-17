@@ -5,6 +5,7 @@ public class Student extends Thread{
 
 	private int numOfExams = 3;
 	private int numOfStudents = 0;
+	public char grade;
 	private String name = "";
 
 	public void run(){
@@ -67,7 +68,34 @@ public class Student extends Thread{
 		}
 
 	}
+	
+	public synchronized void waitToTakeExam() throws InterruptedException{
+		sleep(2000);
+		synchronized(Instructor.waitToTakeExam){
+			if(Instructor.waitToTakeExam.size() < Instructor.getNumSeats()){
+				msg("I am waiting to get the exam.");
+				Instructor.waitToTakeExam.add(this);
+				sleep(1000);
+				Instructor.waitToTakeExam.notify();
+				Instructor.waitToTakeExam.wait();
+			}
+		}
+		sleep(2000);
+	}
 
+	public synchronized void waitToBeGraded() throws InterruptedException{
+		sleep(2500);
+		synchronized(Instructor.waitToBeGraded){
+			if(Instructor.waitToBeGraded.size() < Instructor.getNumSeats()){
+				msg("I am waiting for the exam to be graded.");
+				Instructor.waitToBeGraded.add(this);
+				Instructor.waitToBeGraded.notify();
+				Instructor.waitToBeGraded.wait();
+			}
+		}
+		sleep(2500);
+	}
+	
 	public synchronized void incrementNumberOfStudents(){
 		synchronized(this){
 			Instructor.setNumberOfStudentsWaiting(Instructor.getNumberOfStudentsWaiting() + 1);

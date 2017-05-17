@@ -19,7 +19,7 @@ public class InstructorClient extends Thread{
 			int methodNumber = 0;
 			String line;
 
-			while(methodNumber < 2){
+			while(methodNumber < 9){
 
 				out.println("Instructor " + methodNumber);
 				line = in.readLine();
