@@ -15,7 +15,7 @@ public class StudentClient extends Thread{
 	
 	public void run(){
 
-		try (	Socket studentClient = new Socket("192.168.0.137", 3000);
+		try (	Socket studentClient = new Socket("192.168.0.137", 3000);//port number and server ip
 				PrintWriter out = new PrintWriter(studentClient.getOutputStream(), true);
 				BufferedReader in = new BufferedReader(
 						new InputStreamReader(studentClient.getInputStream()));){
